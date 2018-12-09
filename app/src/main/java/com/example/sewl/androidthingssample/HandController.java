@@ -33,7 +33,11 @@ public class HandController {
 
     public void init(SettingsRepository settingsRepository) {
         pwmDriver = new MultiChannelServoDriver();
-        pwmDriver.init();
+        try {
+            pwmDriver.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         thumb = new ThumbController(BoardDefaults.HandPinout.THUMB, pwmDriver, true);
         indexFinger = new FingerController(BoardDefaults.HandPinout.INDEX, pwmDriver, false, -30);

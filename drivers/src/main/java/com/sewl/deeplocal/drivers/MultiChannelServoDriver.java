@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.google.android.things.pio.I2cDevice;
-import com.google.android.things.pio.PeripheralManagerService;
+import com.google.android.things.pio.PeripheralManager;
 
 import java.io.IOException;
 import java.util.List;
@@ -36,7 +36,7 @@ public class MultiChannelServoDriver {
     private I2cDevice i2cDevice;
 
     public void init() {
-        PeripheralManagerService manager = new PeripheralManagerService();
+        PeripheralManager manager = PeripheralManager.getInstance();
         final List<String> deviceList = manager.getI2cBusList();
         if (deviceList.isEmpty()) {
             Log.e(TAG, "No I2C bus available on this device.");
@@ -106,7 +106,7 @@ public class MultiChannelServoDriver {
 
     private void openConnection(String busName) {
         try {
-            PeripheralManagerService manager = new PeripheralManagerService();
+            PeripheralManager manager = PeripheralManager.getInstance();
             i2cDevice = manager.openI2cDevice(busName, I2C_ADDRESS);
         } catch (IOException e) {
             Log.w(TAG, "Unable to access I2C device", e);

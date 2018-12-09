@@ -5,7 +5,7 @@ android {
     buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.sewl.androidthingssample"
-        minSdkVersion 27
+        minSdkVersion 28
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -30,12 +30,12 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'org.tensorflow:tensorflow-android:1.+'
-    implementation 'com.android.support:appcompat-v7:26.+'
+    implementation 'com.android.support:appcompat-v7:+'
     implementation 'com.google.android.things.contrib:driver-button:0.+'
     implementation 'com.google.android.things.contrib:driver-pwmservo:0.+'
     implementation 'com.google.android.things.contrib:driver-apa102:0.+'
     implementation 'com.android.support.constraint:constraint-layout:1.0+'
-    compileOnly 'com.google.android.things:androidthings:0.7-devpreview'
+    compileOnly 'com.google.android.things:androidthings:1.+'
     implementation group: 'com.google.guava', name: 'guava', version: '11.0.2'
     implementation project(path: ':drivers')
 }
